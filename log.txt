@@ -12,3 +12,15 @@ URL: /favicon.icoMon Apr 04 2022 17:23:12 GMT+0200 (Central European Summer Time
 
 URL: /favicon.icoMon Apr 04 2022 17:23:12 GMT+0200 (Central European Summer Time)
 
+URL: /
+Timestamp: Mon Apr 04 2022 18:06:32 GMT+0200 (Central European Summer Time)
+
+URL: /favicon.ico
+Timestamp: Mon Apr 04 2022 18:06:32 GMT+0200 (Central European Summer Time)
+
+URL: /documentation
+Timestamp: Mon Apr 04 2022 18:06:41 GMT+0200 (Central European Summer Time)
+
+URL: /favicon.ico
+Timestamp: Mon Apr 04 2022 18:06:41 GMT+0200 (Central European Summer Time)
+
