@@ -1,4 +1,5 @@
 const express = require('express');
+morgan = require('morgan');
 const app = express();
 
 
@@ -43,6 +44,8 @@ let topMovies = [
     year: '2014'
   }
 ];
+
+app.use(morgan('common')); //add morgan middlewar library
 
 // GET requests
 app.get('/', (req, res) => {
