@@ -57,6 +57,7 @@ app.get('/movies', (req, res) => {
   res.json(topMovies);
 });
 
+app.use(express.static('public')); //serves “documentation.html” file from the public folder
 
 // listen for requests
 app.listen(8080, () => {
