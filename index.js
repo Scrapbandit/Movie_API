@@ -146,6 +146,18 @@ app.get('/documentation', (req, res) => {
 
 app.get('/movies', (req, res) => {
   res.json(topMovies);
+}); 
+
+//(Read) responds with a json of the specific movie asked for genre
+app.get('/genre/:Name', passport.authenticate('jwt', { session: false }), (req, res) => {
+  Movies.findOne({ 'Genre.Name': req.params.Name })
+    .then((movie) => {
+      res.json(movie.Genre.Description);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
 });
 
 app.use(express.static('public')); //serves “documentation.html” file from the public folder
