@@ -7,7 +7,8 @@ const express = require('express'),
 const app = express();
 
 app.use(bodyParser.json());
-
+ 
+app.use(morgan('common')); //add morgan middlewar library
 
 
 let users = [
@@ -96,7 +97,7 @@ let topMovies = [
   }
 ];
 
-app.use(morgan('common')); //add morgan middlewar library
+
 
 // Gets the list of data about ALL users
 
@@ -152,7 +153,7 @@ app.get('/movies', (req, res) => {
 
 app.get('/movies/genre/:genreName', (req, res) => {
   const { genreName } = req.params;
-  const genre = movies.find( movie => movie.Title === title);
+  const genre = movies.find( movie => movie.genre.name === title).genre;
 
   if (genre) {
     res.status (200).json(genre);
