@@ -116,5 +116,32 @@
                             </code>
                         </pre>
                     </td>
+                    <tr>
+                        <td>Allow users to update their user info</td>
+                        <td>/users/[username]</td>
+                        <td>PUT</td>
+                        <td>:Username</td>
+                        <td> A JSON object holding the new password. Ex:
+                          <pre>
+                            <code>
+                  { 
+                    "name": "susan",
+                    "password": "0000"
+                  }
+                            </code>
+                          </pre>
+                        </td>
+                        <td>JSON object with the updated user. Ex:
+                          <pre>
+                            <code>
+                  { 
+                    id: '1',
+                    name: 'susan', 
+                    password: "0000"
+                  }
+                            </code>
+                          </pre>
+                        </td>
+                      </tr>
     </body>
 </html>
