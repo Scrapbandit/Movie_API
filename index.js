@@ -149,16 +149,17 @@ app.get('/movies', (req, res) => {
 }); 
 
 //(Read) responds with a json of the specific movie asked for genre
-app.get('/genre/:Name', passport.authenticate('jwt', { session: false }), (req, res) => {
-  Movies.findOne({ 'Genre.Name': req.params.Name })
-    .then((movie) => {
-      res.json(movie.Genre.Description);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).send('Error: ' + err);
-    });
-});
+
+app.get('/movies/genre/:genreName', (req, res) => {
+  const { genreName } = req.params;
+  const genre = movies.find( movie => movie.Title === title);
+
+  if (genre) {
+    res.status (200).json(genre);
+  } else {
+    res.status(400).send('no such genre')
+  }
+}); 
 
 app.use(express.static('public')); //serves “documentation.html” file from the public folder
 
