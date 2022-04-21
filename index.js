@@ -1,17 +1,18 @@
 
-const mongoose = require('mongoose');
-const Models = require('./models.js');
-
-const Movies = Models.Movie;
-const Users = Models.User;
-
-mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
 
 
 const express = require('express'),
       bodyParser = require('body-parser'),
       uuid = require('uuid'),
       morgan = require('morgan')
+      mongoose = require('mongoose'),
+      Models = require('./models.js');
+
+const Movies = Models.Movie,
+       Users = Models.User;
+
+mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
+
       
 
 const app = express();
@@ -118,10 +119,17 @@ app.get('/users', (req, res) => {
 });
 // Gets the data about a single user, by name
 
-app.get('/users/:name', (req, res) => {
-  res.json(users.find((user) =>
-    { return user.name === req.params.name }));
-});
+app.get('/users/:username', (req, res) => {
+  Users.findOne({ Username: req.params.Username })
+  .then((user) => {
+    res.json(user);
+  })
+  .catch((err) => {
+    console.error(err);
+    res.status(500).send("Error: " + err);
+  });
+}
+);
 
 // Adds data for a new user to our list of users.
 app.post('/users', (req, res) => {
