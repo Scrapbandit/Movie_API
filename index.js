@@ -59,54 +59,38 @@ let movies = [
     },
     ImagePath: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRf61mker2o4KH3CbVE7Zw5B1-VogMH8LfZHEaq3UdCMLxARZAB",
     Featured: true
-  }
-  {
-    title: 'Lord of the Rings',
-    year: '2003',
-    genre: {
-      name: "Fantasy",
-      description: "",
-    },
-    director: {
-      name: "Peter Jackson",
-      birth: "1962",
-      death: "-",
-      bio: "",
-    },
-    actors: {},
-    imgURL: "",
   },
   {
-    title: 'Inception',
-    year: '2010',
-    genre: {
-      name: "Science-Fiction",
-      description: "",
+    Title: "The Hobbit",
+    Description: "A reluctant Hobbit, Bilbo Baggins, sets out to the Lonely Mountain with a spirited group of dwarves to reclaim their mountain home, and the gold within it from the dragon Smaug.",
+    Genre: {
+      Name: "Fantasy",
+      Description: "speculative fiction involving magical elements, typically set in a fictional universe and sometimes inspired by mythology and folklore. Its roots are in oral traditions, which then became fantasy literature and drama. From the twentieth century, it has expanded further into various media, including film, television, graphic novels, manga, animated movies and video games."
     },
-    director: {
-      name: "Danny Devito",
-      birth: "1940",
-      death: "-",
-      bio: "",
+  
+    Director: {
+      Name: "Peter Jackson",
+      Bio: "Peter Jackson is an American director, producer, and screenwriter.",
+      Birth: "1961-10-31"
     },
-    actors: {},
-    imgURL: "",
+    ImagePath: "https://resizing.flixster.com/bvVhpq1XDXo409UQ07ZgFrsIlZ0=/206x305/v2/https://flxt.tmsimg.com/assets/p9458059_p_v8_ac.jpg",
+    Featured: true
   },
   {
-    title: 'Gatsby',
-    year: '2013',
-    genre: {
-      name: "Drama",
-      description: "",
+    Title: "Inception",
+    Description: "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O., but his tragic past may doom the project and his team to disaster.",
+    Genre: {
+      Name: "Sci-Fi",
+      Description: " speculative fiction which typically deals with imaginative and futuristic concepts such as advanced science and technology, space exploration, time travel, parallel universes, and extraterrestrial life. It has been called the literature of ideas, and it often explores the potential consequences of scientific, social, and technological innovations."
     },
-    director: {
-      name: "Mike Ronson",
-      birth: "1962",
-      death: "-",
-      bio: "",
+  
+    Director: {
+      Name: "Christopher Nolan",
+      Bio: "Christopher Nolan is an American director, producer, and screenwriter.",
+      Birth: "1970-07-30"
     },
-    actors: {},
-    imgURL: "",
+    ImagePath: "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_FMjpg_UX1000_.jpg",
+    Featured: true
   }
 ];
 // // Title: {type: String, required: true},
