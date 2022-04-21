@@ -45,21 +45,21 @@ let users = [
 
 let movies = [
   {
-    title: 'Harry Potter and the Sorcerer\'s Stone',
-    year: '2001',
-    genre: {
-      name: "fantasy",
-      description: "",
+    Title: "Interstellar",
+    Description: "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+    Genre: {
+      Name: "Sci-Fi",
+      Description: " speculative fiction which typically deals with imaginative and futuristic concepts such as advanced science and technology, space exploration, time travel, parallel universes, and extraterrestrial life. It has been called the literature of ideas, and it often explores the potential consequences of scientific, social, and technological innovations."
     },
-    director: {
-      name: "Christopher Nolan",
-      birth: "1970",
-      death: "-",
-      bio: "",
+  
+    Director: {
+      Name: "Christopher Nolan",
+      Bio: "Christopher Nolan is an American director, producer, and screenwriter.",
+      Birth: "1970-07-30"
     },
-    actors: {},
-    imgURL: "",
-  },
+    ImagePath: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRf61mker2o4KH3CbVE7Zw5B1-VogMH8LfZHEaq3UdCMLxARZAB",
+    Featured: true
+  }
   {
     title: 'Lord of the Rings',
     year: '2003',
