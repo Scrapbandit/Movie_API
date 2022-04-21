@@ -93,21 +93,6 @@ let movies = [
     Featured: true
   }
 ];
-// // Title: {type: String, required: true},
-// Description: {type: String, required: true},
-// Genre: {
-//   Name: String,
-//   Description: String
-// },
-// Director: {
-//   Name: String,
-//   Bio: String
-// },
-// Actors: [String],
-// ImagePath: String,
-// Featured: Boolean
-// });
-
 
 // Gets the list of data about ALL users
 
@@ -134,6 +119,34 @@ app.get('/users/:Username', (req, res) => {
     });
 });
 
+//creat new user
+
+app.post('/users', (req, res) => {
+  Users.findOne({ Username: req.body.Username })
+    .then((user) => {
+      if (user) {
+        return res.status(400).send(req.body.Username + 'already exists');
+      } else {
+        Users
+          .create({
+            Username: req.body.Username,
+            Password: req.body.Password,
+            Email: req.body.Email,
+            Birthday: req.body.Birthday
+          })
+          .then((user) =>{res.status(201).json(user) })
+        .catch((error) => {
+          console.error(error);
+          res.status(500).send('Error: ' + error);
+        })
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(500).send('Error: ' + error);
+    });
+});
+
 //UPDATE user mongoose
 
 app.put('/users/:Username', (req, res) => {
@@ -156,6 +169,21 @@ app.put('/users/:Username', (req, res) => {
   });
 });
 
+//add movie to users favorite
+app.post('/users/:Username/movies/:MovieID', (req, res) => {
+  Users.findOneAndUpdate({ Username: req.params.Username }, {
+     $push: { FavoriteMovies: req.params.MovieID }
+   },
+   { new: true }, // This line makes sure that the updated document is returned
+  (err, updatedUser) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    } else {
+      res.json(updatedUser);
+    }
+  });
+});
 
 // Deletes a user from our list by username
 app.delete('/users/:Username', (req, res) => {
@@ -195,30 +223,39 @@ app.get('/movies', (req, res) => {
     });
 });
 
-app.get('/movies/:title', (req, res) => {
-  const { title } = req.params;
-  const movie = movies.find (movie => movie.Tilte === title);
-
-  if (movie) {
-    res.status(200).json(movie);
-  } else {
-    res.status(400).send ("no such movie")
-  }
-}); 
-
+app.get('/movies/:Title', (req, res) => {
+  Movies.findOne({ Title: req.params.Title })
+    .then((movie) => {
+      res.json(movie);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+});
 
 //(Read) responds with a json of the specific movie asked for genre
-
-app.get('/movies/genre/:name', (req, res) => {
-  const { genreName } = req.params;
-  const genre = movies.find( movie => movie.genre.name === title).genre;
-
-  if (genre) {
-    res.status (200).json(genre);
-  } else {
-    res.status(400).send('no such genre')
+app.get("/genre/:Name", (req, res) => {
+    Genre.find({ "Genre.Name": req.params.Name })
+      .then((genre) => {
+        res.json(genre);
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(500).send("Error " + err);
+      });
   }
-})
+);
+// app.get('/movies/genre/:name', (req, res) => {
+//   const { genreName } = req.params;
+//   const genre = movies.find( movie => movie.genre.name === title).genre;
+
+//   if (genre) {
+//     res.status (200).json(genre);
+//   } else {
+//     res.status(400).send('no such genre')
+//   }
+// })
 
 app.use(express.static('public')); //serves “documentation.html” file from the public folder
 
