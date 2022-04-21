@@ -42,7 +42,7 @@ let users = [
   }
 ];
 
-let topMovies = [
+let movies = [
   {
     title: 'Harry Potter and the Sorcerer\'s Stone',
     year: '2001',
