@@ -4,7 +4,8 @@
 const express = require('express'),
       bodyParser = require('body-parser'),
       uuid = require('uuid'),
-      morgan = require('morgan')
+      morgan = require('morgan');
+const { send } = require('process');
       mongoose = require('mongoose'),
       Models = require('./models.js');
 
@@ -235,8 +236,8 @@ app.get('/movies/:Title', (req, res) => {
 });
 
 //(Read) responds with a json of the specific movie asked for genre
-app.get("/genre/:Name", (req, res) => {
-    Genre.find({ "Genre.Name": req.params.Name })
+app.get("movies/genre/:genreName", (req, res) => {
+    genre.find({ "Genre.Name": req.params.Name })
       .then((genre) => {
         res.json(genre);
       })
@@ -248,7 +249,7 @@ app.get("/genre/:Name", (req, res) => {
 );
 // app.get('/movies/genre/:name', (req, res) => {
 //   const { genreName } = req.params;
-//   const genre = movies.find( movie => movie.genre.name === title).genre;
+//   const genre = movies.find( movie => movie.Genre.Name === genreName).Genre;
 
 //   if (genre) {
 //     res.status (200).json(genre);
