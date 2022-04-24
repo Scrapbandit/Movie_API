@@ -236,10 +236,10 @@ app.get('/movies/:Title', (req, res) => {
 });
 
 //(Read) responds with a json of the specific movie asked for genre
-app.get("movies/genre/:genreName", (req, res) => {
-    genre.find({ "Genre.Name": req.params.Name })
-      .then((genre) => {
-        res.json(genre);
+app.get("movies/genre/:Name", (req, res) => {
+    movies.find({ "Genre.Name": req.params.Name })
+      .then((movie) => {
+        res.json(movie.Genre.Description);
       })
       .catch((err) => {
         console.error(err);
@@ -247,16 +247,20 @@ app.get("movies/genre/:genreName", (req, res) => {
       });
   }
 );
-// app.get('/movies/genre/:name', (req, res) => {
-//   const { genreName } = req.params;
-//   const genre = movies.find( movie => movie.Genre.Name === genreName).Genre;
-
-//   if (genre) {
-//     res.status (200).json(genre);
-//   } else {
-//     res.status(400).send('no such genre')
-//   }
-// })
+// app.get('/genre/:Name', (req, res) => {
+//     Movies.findOne({ 'Genre.Name': req.params.Name })
+//     .then((movie) => {
+//       if(movie){ 
+//          res.json(movie.Genre.Description);
+//     }else{
+//       res.status(400).send('Genre not found.');
+//     };
+//     })  
+//     .catch((err) => {
+//         console.error(err);
+//         res.status(500).send('Error: ' + error);
+//     });
+// });
 
 app.use(express.static('public')); //serves “documentation.html” file from the public folder
 
