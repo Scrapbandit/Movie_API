@@ -132,7 +132,6 @@ passport.authenticate('jwt', {session: false}),
 //creat new user
 
 app.post('/users', 
-passport.authenticate('jwt', {session: false}), 
 (req, res) => {
   Users.findOne({ Username: req.body.Username })
     .then((user) => {
@@ -259,12 +258,15 @@ passport.authenticate('jwt', {session: false}),
 });
 
 //(Read) responds with a json of the specific movie asked for genre
-app.get("movies/genre/:Name",
+app.get("/movies/genre/:Name",
 passport.authenticate('jwt', {session: false}),
  (req, res) => {
-    movies.find({ "Genre.Name": req.params.Name })
+    Movies.findOne({ "Genre.Name": req.params.Name })
       .then((movie) => {
-        res.json(movie.Genre.Description);
+        if (!movie) {
+          return res.json(null);
+        }
+        return res.json(movie.Genre.Description);
       })
       .catch((err) => {
         console.error(err);
