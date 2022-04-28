@@ -146,6 +146,7 @@ app.get('/users/:Username',
 
 app.post('/users', 
 (req, res) => {
+  let hashedPassword = Users.hashPassword(req.body.Password);
   Users.findOne({ Username: req.body.Username })
     .then((user) => {
       if (user) {
