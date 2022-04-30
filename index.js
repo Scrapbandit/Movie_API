@@ -14,7 +14,7 @@ const Movies = Models.Movie,
 
 const { check, validationResult } = require('express-validator');
 
-mongoose.connect('mongodb+srv://myFlixDBuser:Bardak666@cluster0.2epnj.mongodb.net/myFlixDB?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('process.env.CONNECTION_URI', { useNewUrlParser: true, useUnifiedTopology: true });
 
       
 
