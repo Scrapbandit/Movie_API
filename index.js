@@ -5,8 +5,8 @@ const express = require('express'),
       bodyParser = require('body-parser'),
       uuid = require('uuid'),
       morgan = require('morgan');
-const { send } = require('process');
-      mongoose = require('mongoose'),
+     
+const mongoose = require('mongoose'),
       Models = require('./models.js');
 
 const Movies = Models.Movie,
@@ -15,8 +15,7 @@ const Movies = Models.Movie,
 const { check, validationResult } = require('express-validator');
 
 mongoose.connect('process.env.CONNECTION_URI', { useNewUrlParser: true, useUnifiedTopology: true });
-
-      
+ 
 
 const app = express();
 
@@ -25,19 +24,23 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const cors = require('cors');
+app.use(cors({}));
 
-let allowedOrigins = ['https://git.heroku.com/my-flix-movies-api.git'];
 
-app.use(cors({
-  origin: (origin, callback) => {
-    if(!origin) return callback(null, true);
-    if(allowedOrigins.indexOf(origin) === -1){ // If a specific origin isn’t found on the list of allowed origins
-      let message = 'The CORS policy for this application doesn`t allow from origin ' + origin;
-      return callback(new Error(message ), false);
-    }
-    return callback(null, true);
-  }
-}));
+// const cors = require('cors');
+
+// let allowedOrigins = ['https://git.heroku.com/my-flix-movies-api.git'];
+
+// app.use(cors({
+//   origin: (origin, callback) => {
+//     if(!origin) return callback(null, true);
+//     if(allowedOrigins.indexOf(origin) === -1){ // If a specific origin isn’t found on the list of allowed origins
+//       let message = 'The CORS policy for this application doesn`t allow from origin ' + origin;
+//       return callback(new Error(message ), false);
+//     }
+//     return callback(null, true);
+//   }
+// }));
 
 let auth = require('./auth')(app);
 
