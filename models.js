@@ -36,5 +36,5 @@ let movieSchema = mongoose.Schema({
   const Movie = mongoose.model('Movie', movieSchema);
   const User = mongoose.model('User', userSchema);
   
-  module.exports.Movie = Movie;
-  module.exports.User = User;
+  module.exports = { Movie, User }
+ 
